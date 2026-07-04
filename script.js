@@ -48,33 +48,7 @@ window.addEventListener("scroll", () => {
     }
 });
 
-/* COUNTER ANIMATION (STATISTICS) */
 
-
-const counters = document.querySelectorAll(".stat-number");
-
-const speed = 50;
-
-const animateCounters = () => {
-    counters.forEach(counter => {
-        const target = +counter.getAttribute("data-count");
-        let count = 0;
-
-        const update = () => {
-            const increment = target / speed;
-
-            if (count < target) {
-                count += increment;
-                counter.innerText = Math.ceil(count) + "+";
-                requestAnimationFrame(update);
-            } else {
-                counter.innerText = target + "+";
-            }
-        };
-
-        update();
-    });
-};
 /* TRIGGER COUNTERS WHEN IN VIEW */
 
 const statsSection = document.querySelector(".stats");
