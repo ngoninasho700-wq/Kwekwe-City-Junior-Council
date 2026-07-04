@@ -50,31 +50,31 @@ window.addEventListener("scroll", () => {
 
 /* COUNTER ANIMATION (STATISTICS) */
 
-const counters = document.querySelectorAll(".stat h2");
 
-const speed = 200;
+const counters = document.querySelectorAll(".stat-number");
+
+const speed = 50;
 
 const animateCounters = () => {
     counters.forEach(counter => {
-        const updateCount = () => {
-            const target = +counter.innerText.replace("+", "");
-            const count = +counter.getAttribute("data-count") || 0;
+        const target = +counter.getAttribute("data-count");
+        let count = 0;
 
+        const update = () => {
             const increment = target / speed;
 
             if (count < target) {
-                counter.setAttribute("data-count", Math.ceil(count + increment));
-                counter.innerText = Math.ceil(count + increment);
-                setTimeout(updateCount, 20);
+                count += increment;
+                counter.innerText = Math.ceil(count) + "+";
+                requestAnimationFrame(update);
             } else {
                 counter.innerText = target + "+";
             }
         };
 
-        updateCount();
+        update();
     });
 };
-
 /* TRIGGER COUNTERS WHEN IN VIEW */
 
 const statsSection = document.querySelector(".stats");
