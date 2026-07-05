@@ -12,7 +12,7 @@ window.addEventListener("load", () => {
         loader.style.opacity = "0";
         loader.style.visibility = "hidden";
         loader.style.transition = "0.8s ease";
-    }, 1500);
+    }, 700);
 });
 
 /* MOBILE NAVIGATION */
